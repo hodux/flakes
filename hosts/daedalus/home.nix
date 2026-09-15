@@ -5,13 +5,28 @@
     [control_center]
     hidden_tabs = [ "power" ]
 
-    [bar.default]
-    enabled = false
-    margin_edge = 6
-
     [bar]
+    order = [ "default", "small", "wide" ]
+
+        [bar.default]
+        enabled = false
+        margin_edge = 6
 
         [bar.small]
+        end = [
+            "tray",
+            "notifications",
+            "clipboard",
+            "network",
+            "bluetooth",
+            "volume",
+            "brightness",
+            "battery",
+            "control-center",
+            "session"
+        ]
+        margin_edge = 4
+        margin_ends = 525
 
             [bar.small.monitor.dell]
             margin_ends = 900

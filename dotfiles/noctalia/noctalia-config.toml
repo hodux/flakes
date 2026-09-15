@@ -2,50 +2,7 @@
 enable_sounds = true
 
 [bar]
-order = [ "default", "small", "wide" ]
-
-    [bar.small]
-    end = [
-        "tray",
-        "notifications",
-        "clipboard",
-        "network",
-        "bluetooth",
-        "volume",
-        "brightness",
-        "battery",
-        "control-center",
-        "session"
-    ]
-    margin_edge = 4
-    margin_ends = 525
-
-    [bar.wide]
-    center = [ "clock", "weather", "date" ]
-    concave_edge_corners = false
-    contact_shadow = true
-    enabled = false
-    end = [
-        "audio_visualizer",
-        "tray",
-        "notifications",
-        "clipboard",
-        "network_rx",
-        "network_tx",
-        "network",
-        "bluetooth",
-        "volume",
-        "brightness",
-        "battery",
-        "control-center",
-        "session"
-    ]
-    margin_ends = 0
-    padding = 8
-    radius = 0
-    start = [ "launcher", "wallpaper", "workspaces", "cpu", "temp", "ram", "active_window" ]
-    thickness = 28
-    widget_spacing = 8
+order = [ "default"]
 
 [brightness]
 enable_ddcutil = true
