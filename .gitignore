@@ -5,4 +5,4 @@ conf.d/secrets.fish
 *.local.fish
 
 # tmux
-plugins/
+tmux/plugins/
