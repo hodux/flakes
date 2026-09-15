@@ -4,10 +4,6 @@ enable_sounds = true
 [bar]
 order = [ "default", "small", "wide" ]
 
-    [bar.default]
-    enabled = false
-    margin_edge = 6
-
     [bar.small]
     end = [
         "tray",

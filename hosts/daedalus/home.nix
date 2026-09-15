@@ -5,6 +5,10 @@
     [control_center]
     hidden_tabs = [ "power" ]
 
+    [bar.default]
+    enabled = false
+    margin_edge = 6
+
     [bar]
 
         [bar.small]
