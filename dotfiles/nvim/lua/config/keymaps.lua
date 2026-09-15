@@ -1,0 +1,125 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+
+vim.keymap.set({ "n", "v" }, ";", ":", { desc = "Enter Command Mode" })
+
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank line to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
+
+vim.keymap.set("n", "<leader>tk", function()
+  local root = LazyVim.root()
+  vim.fn.jobstart({ "kitty", "--directory", root }, { detach = true })
+end, { desc = "Open External Terminal (kitty)" })
+
+vim.keymap.set("n", "<leader>te", function()
+  local root = LazyVim.root()
+  vim.fn.jobstart({ "thunar", root }, { detach = true })
+end, { desc = "Open External File Manager (Thunar)" })
+
+
+if vim.g.vscode then
+  local vscode = require("vscode")
+
+  -- Project & Files
+  vim.keymap.set("n", "<leader>fl", function()
+    vscode.action("workbench.action.openRecent")
+  end, { desc = "Switch Project (Workspace)" })
+  vim.keymap.set("n", "<leader>fp", function()
+    vscode.action("workbench.action.files.openFolder")
+  end, { desc = "Recent Projects" })
+  vim.keymap.set("n", "<C-p>", function()
+    vscode.action("workbench.action.quickOpen")
+  end, { desc = "Find Files" })
+  vim.keymap.set("n", "<leader>ff", function()
+    vscode.action("workbench.action.quickOpen")
+  end, { desc = "Find Files" })
+  vim.keymap.set("n", "<leader>fn", function()
+    vscode.action("workbench.action.files.newUntitledFile")
+  end, { desc = "New File" })
+  vim.keymap.set("n", "<leader>fr", function()
+    vscode.action("workbench.action.openRecent")
+  end, { desc = "Recent" })
+  vim.keymap.set("n", "<leader>e", function()
+    vscode.action("workbench.view.explorer")
+  end, { desc = "File Explorer" })
+  vim.keymap.set("n", "<leader>fe", function()
+    vscode.action("workbench.view.explorer")
+  end, { desc = "File Explorer" })
+
+  -- Search / Grep
+  vim.keymap.set("n", "<leader>sg", function()
+    vscode.action("workbench.action.findInFiles")
+  end, { desc = "Search in Files" })
+  vim.keymap.set("n", "<leader>sw", function()
+    vscode.action("workbench.action.findInFiles")
+  end, { desc = "Search Word" })
+
+  -- Buffers / Editors
+  vim.keymap.set("n", "<leader>bd", function()
+    vscode.action("workbench.action.closeActiveEditor")
+  end, { desc = "Close Editor" })
+  vim.keymap.set("n", "<leader>bD", function()
+    vscode.action("workbench.action.closeOtherEditors")
+  end, { desc = "Close Other Editors" })
+  vim.keymap.set("n", "<leader>bo", function()
+    vscode.action("workbench.action.closeOtherEditors")
+  end, { desc = "Close Other Editors" })
+  vim.keymap.set("n", "<leader>bb", function()
+    vscode.action("workbench.action.showAllEditorsByMostRecentlyUsed")
+  end, { desc = "Switch Editor" })
+
+  -- Code / LSP
+  vim.keymap.set("n", "<leader>ca", function()
+    vscode.action("editor.action.quickFix")
+  end, { desc = "Code Action" })
+  vim.keymap.set("n", "<leader>cr", function()
+    vscode.action("editor.action.rename")
+  end, { desc = "Rename" })
+  vim.keymap.set("n", "<leader>cf", function()
+    vscode.action("editor.action.formatDocument")
+  end, { desc = "Format Document" })
+  vim.keymap.set("n", "<leader>cd", function()
+    vscode.action("editor.action.showHover")
+  end, { desc = "Line Diagnostics / Hover" })
+  vim.keymap.set("n", "<leader>xx", function()
+    vscode.action("workbench.actions.view.problems")
+  end, { desc = "Problems / Diagnostics" })
+  vim.keymap.set("n", "gd", function()
+    vscode.action("editor.action.revealDefinition")
+  end, { desc = "Go to Definition" })
+  vim.keymap.set("n", "gr", function()
+    vscode.action("editor.action.goToReferences")
+  end, { desc = "Go to References" })
+  vim.keymap.set("n", "gI", function()
+    vscode.action("editor.action.goToImplementation")
+  end, { desc = "Go to Implementation" })
+  vim.keymap.set("n", "gy", function()
+    vscode.action("editor.action.goToTypeDefinition")
+  end, { desc = "Go to Type Definition" })
+  vim.keymap.set("n", "[d", function()
+    vscode.action("editor.action.marker.prev")
+  end, { desc = "Previous Problem" })
+  vim.keymap.set("n", "]d", function()
+    vscode.action("editor.action.marker.next")
+  end, { desc = "Next Problem" })
+
+  -- Git
+  vim.keymap.set("n", "<leader>gg", function()
+    vscode.action("workbench.view.scm")
+  end, { desc = "Source Control" })
+  vim.keymap.set("n", "[h", function()
+    vscode.action("workbench.action.editor.previousChange")
+  end, { desc = "Previous Change" })
+  vim.keymap.set("n", "]h", function()
+    vscode.action("workbench.action.editor.nextChange")
+  end, { desc = "Next Change" })
+else
+  -- Standalone Neovim keymaps
+  vim.keymap.set("n", "<C-p>", LazyVim.pick("files"), { desc = "Find Files (Root Dir)" })
+
+  vim.keymap.set("n", "<leader>fp", "<cmd>NeovimProjectDiscover<cr>", { desc = "Switch Project (Workspace)" })
+  vim.keymap.set("n", "<leader>fl", "<cmd>NeovimProjectLoadRecent<cr>", { desc = "Recent Projects" })
+end

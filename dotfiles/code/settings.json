@@ -1,0 +1,35 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "files.autoSave": "afterDelay",
+    "terminal.external.linuxExec": "kitty",
+    "workbench.sideBar.location": "right",
+    "workbench.activityBar.location": "top",
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "telemetry.editStats.enabled": false,
+    "editor.smoothScrolling": true,
+    "markdown-preview-enhanced.previewTheme": "vscode.css",
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+    "nix.formatterPath": ["nixfmt"],
+    "nix.serverSettings": {
+        "nixd": {
+            "formatting": {
+                "command": ["nixfmt"]
+            },
+            "nixpkgs": {
+            "expr": "import (builtins.getFlake\"/home/rintaro/projects/nixos-config\").inputs.nixpkgs { }"
+            },
+            "options": {
+            "nixos": {
+                "expr": "let flake = builtins.getFlake\"/home/rintaro/projects/nixos-config\"; host = builtins.replaceStrings [\"\\n\"] [\"\"] (builtins.readFile \"/etc/hostname\");in flake.nixosConfigurations.${host}.options"
+            },
+            "home-manager": {
+                "expr": "let flake = builtins.getFlake\"/home/rintaro/projects/nixos-config\"; host = builtins.replaceStrings [\"\\n\"] [\"\"] (builtins.readFile \"/etc/hostname\");in flake.nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []"
+            }
+            }
+        }
+    }
+}

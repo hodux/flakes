@@ -1,0 +1,124 @@
+[audio]
+enable_sounds = true
+
+[bar]
+order = [ "default", "small", "wide" ]
+
+    [bar.default]
+    enabled = false
+    margin_edge = 6
+
+    [bar.small]
+    end = [
+        "tray",
+        "notifications",
+        "clipboard",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "control-center",
+        "session"
+    ]
+    margin_edge = 4
+    margin_ends = 525
+
+    [bar.wide]
+    center = [ "clock", "weather", "date" ]
+    concave_edge_corners = false
+    contact_shadow = true
+    enabled = false
+    end = [
+        "audio_visualizer",
+        "tray",
+        "notifications",
+        "clipboard",
+        "network_rx",
+        "network_tx",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "control-center",
+        "session"
+    ]
+    margin_ends = 0
+    padding = 8
+    radius = 0
+    start = [ "launcher", "wallpaper", "workspaces", "cpu", "temp", "ram", "active_window" ]
+    thickness = 28
+    widget_spacing = 8
+
+[brightness]
+enable_ddcutil = true
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_icloud]
+    name = "iCloud Calendar"
+    provider = "icloud"
+    type = "caldav"
+    username = "hoduxs@gmail.com"
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[location]
+auto_locate = true
+
+[shell]
+settings_show_advanced = true
+
+    [shell.screen_corners]
+    enabled = true
+
+[theme]
+mode = "light"
+source = "community"
+
+    [theme.templates]
+    builtin_ids = [ "niri" ]
+
+[wallpaper]
+directory = "/home/rintaro/Pictures/Wallpapers"
+
+[widget.date]
+format = "{:%a, %d %b}"
+
+[widget.taskbar]
+capsule = true
+scale = 1.95
+show_all_outputs = true
+
+[widget.tray]
+drawer = true

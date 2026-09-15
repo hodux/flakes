@@ -1,0 +1,8 @@
+# fish
+generated_completions/
+fish_variables
+conf.d/secrets.fish
+*.local.fish
+
+# tmux
+plugins/
