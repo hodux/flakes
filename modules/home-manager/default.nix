@@ -25,18 +25,15 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/code/settings.json";
   home.file.".config/Code/User/keybindings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/code/keybindings.json";
-  home.file.".config/fish".source = 
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/fish";
-  home.file.".config/kitty/kitty.conf".source = 
+  home.file.".config/fish".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/fish";
+  home.file.".config/kitty/kitty.conf".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/kitty/kitty.conf";
-  home.file.".config/niri/config.kdl".source = 
+  home.file.".config/niri/config.kdl".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/niri/config.kdl";
-  home.file.".config/noctalia/noctalia-config.toml".source = 
+  home.file.".config/noctalia/noctalia-config.toml".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/noctalia/noctalia-config.toml";
-  home.file.".config/nvim".source = 
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
-  home.file.".config/tmux".source = 
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux";
+  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
+  home.file.".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux";
 
   programs.noctalia.enable = true;
   programs.zen-browser.enable = true;
@@ -107,10 +104,13 @@ in
     name = "Trash";
     genericName = "Trash Can";
     comment = "Open the Trash Can";
-    exec = "thunar trash:///"; 
+    exec = "thunar trash:///";
     icon = "user-trash";
     terminal = false;
-    categories = [ "System" "Utility" ];
+    categories = [
+      "System"
+      "Utility"
+    ];
   };
 
   # temp fix for popups' wrong positioning
@@ -135,13 +135,18 @@ in
     exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
     icon = "spotify-client";
     type = "Application";
-    categories = [ "Audio" "Music" "Player" "AudioVideo" ];
+    categories = [
+      "Audio"
+      "Music"
+      "Player"
+      "AudioVideo"
+    ];
     settings = {
       StartupWMClass = "spotify";
       Version = "1.5";
     };
   };
-  
+
   xdg.desktopEntries."lmms" = {
     name = "LMMS";
     genericName = "Digital Audio Workstation";
@@ -149,12 +154,33 @@ in
     exec = "${pkgs.pipewire.jack}/bin/pw-jack ${pkgs.lmms}/bin/lmms %f";
     icon = "lmms";
     type = "Application";
-    categories = [ "AudioVideo" "Audio" "Midi" ];
+    categories = [
+      "AudioVideo"
+      "Audio"
+      "Midi"
+    ];
     mimeType = [ "application/x-lmms-project" ];
     settings = {
       StartupWMClass = "lmms";
       Version = "1.5";
     };
+  };
+
+  # custom app-id so nvim isn't affected by niri kitty window rule
+  xdg.desktopEntries."nvim" = {
+    name = "Neovim wrapper";
+    genericName = "Text Editor";
+    comment = "Edit text files";
+    exec = "kitty --app-id kitty-nvim -e nvim %F";
+    icon = "nvim";
+    type = "Application";
+    terminal = false;
+    categories = [
+      "Utility"
+      "TextEditor"
+      "Development"
+    ];
+    mimeType = [ "text/plain" ];
   };
 
   # don't change this

@@ -213,10 +213,11 @@ window-rule {
     open-on-workspace "ghost"
 }
 
+// attention needed windows
 window-rule {
     match is-urgent=true
     baba-is-float true
-    
+ 
     focus-ring {
         active-color "#ff0000"
         inactive-color "#ff0000"
@@ -258,7 +259,6 @@ window-rule {
 // Kitty blur + fixed size
 window-rule {
     match app-id=r#"kitty$"#
-    opacity 0.85
     default-column-width { fixed 700; }
 }
 window-rule {
