@@ -44,6 +44,7 @@
     jdt-language-server
     nixfmt
     nixd
+    statix
     stylua
     typescript-language-server
     pyright
@@ -154,6 +155,7 @@
     yamllint
     jinja2-cli
     dialog
+    openconnect
 
     # AI
     lmstudio
