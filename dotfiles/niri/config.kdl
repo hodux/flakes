@@ -262,11 +262,11 @@ window-rule {
     default-column-width { fixed 700; }
 }
 window-rule {
-    match is-active=false app-id=r#"kitty$"#
+    match is-active=false app-id=r#"^kitty"#
     opacity 0.85
 }
 window-rule {
-    match is-active=true app-id=r#"kitty$"#
+    match is-active=true app-id=r#"^kitty"#
     opacity 0.90
 }
 
