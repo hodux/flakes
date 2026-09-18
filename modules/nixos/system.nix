@@ -5,28 +5,44 @@
   ...
 }:
 
+# Networking
 {
-  # Networking
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+      plugins = [ pkgs.networkmanager-openconnect ];
+    };
+    # wg-quick.interfaces = {
+    #   user07 = {
+    #     configFile = "/etc/wireguard/user07.conf";
+    #   };
+    # };
+  };
+
   time.timeZone = "America/Toronto";
+  services = {
+    udisks2 = {
+      enable = true;
+      # Optional: if you want it to show up specifically in /media instead of /run/media
+      mountOnMedia = true;
+    };
+    # For thunar
+    gvfs.enable = true;
+    envfs.enable = true;
+    # Enable CUPS to print documents.
+    printing = {
+      enable = true;
+      drivers = [ pkgs.gutenprint ];
+    };
+    resolved = {
+      enable = true;
+      fallbackDns = [
+        "1.1.1.1"
+        "9.9.9.9"
+      ];
+    };
 
-  # networking.wg-quick.interfaces = {
-  #   user07 = {
-  #     configFile = "/etc/wireguard/user07.conf";
-  #   };
-  # };
-
-  services.udisks2.enable = true;
-  # Optional: if you want it to show up specifically in /media instead of /run/media
-  services.udisks2.mountOnMedia = true;
-
-  services.gvfs.enable = true;
-  services.envfs.enable = true;
-
-  # Enable CUPS to print documents.
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.gutenprint ];
   };
 
   # User Account
@@ -69,6 +85,7 @@
     ];
   };
 
+  # Automatic GC a week
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -77,22 +94,25 @@
   nixpkgs.config.allowUnfree = true;
 
   # Core Programs
-  programs.fish.enable = true;
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-    stdenv.cc.cc.lib
-    stdenv.cc
-    zlib
-    fuse3
-    icu
-    nss
-    openssl
-    curl
-    expat
-  ];
+  programs = {
+    fish.enable = true;
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+      # Add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
+      stdenv.cc.cc.lib
+      stdenv.cc
+      zlib
+      fuse3
+      icu
+      nss
+      openssl
+      curl
+      expat
+    ];
+  };
 
+  # To avoid fish long rebuild times
   documentation.man.cache.enable = false;
 
   # Swap

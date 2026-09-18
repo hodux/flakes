@@ -123,6 +123,8 @@
     unrar
     file-roller
     ngrok
+    networkmanager-openconnect
+    networkmanagerapplet
 
     # Editors
     neovim
@@ -155,7 +157,6 @@
     yamllint
     jinja2-cli
     dialog
-    openconnect
 
     # AI
     lmstudio
