@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   virtualisation.docker.enable = true;
@@ -21,7 +26,6 @@
     };
   };
 
-
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -35,6 +39,7 @@
     python3
     gradle
     jdk21
+    maven
 
     # lsps (should be with nix develop)
     tree-sitter
