@@ -114,20 +114,6 @@ in
   };
 
   # temp fix for popups' wrong positioning
-  xdg.desktopEntries."idea" = {
-    name = "IntelliJ IDEA";
-    genericName = "Java, Kotlin, Groovy and Scala IDE from JetBrains";
-    comment = "IDE for Java SE, Groovy & Scala development Powerful environment for building Google Android apps Integration with JUnit, TestNG, popular SCMs, Ant & Maven. Also known as IntelliJ.";
-    exec = "env -u WAYLAND_DISPLAY idea";
-    icon = "idea";
-    type = "Application";
-    categories = [ "Development" ];
-    settings = {
-      StartupWMClass = "jetbrains-idea";
-      Version = "1.5";
-    };
-  };
-
   xdg.desktopEntries."spotify" = {
     name = "Spotify";
     genericName = "Music Player";
@@ -166,7 +152,6 @@ in
     };
   };
 
-  # custom app-id so nvim isn't affected by niri kitty window rule
   xdg.desktopEntries."nvim" = {
     name = "Neovim wrapper";
     genericName = "Text Editor";
