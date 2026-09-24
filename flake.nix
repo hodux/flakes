@@ -61,7 +61,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/daedalus
-            { nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.default ]; }
+            { nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ]; }
           ];
         };
       };
