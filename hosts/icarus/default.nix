@@ -13,26 +13,31 @@
     ./home.nix
   ];
 
-  hardware.graphics.extraPackages = with pkgs; [ intel-media-driver ];
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-    settings = {
-      General = {
-        Experimental = true;
-        FastConnectable = true;
-        ControllerMode = "bredr";
-      };
-      Policy = {
-        AutoEnable = true;
+  hardware = {
+    graphics.extraPackages = with pkgs; [ intel-media-driver ];
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+      settings = {
+        General = {
+          Experimental = true;
+          FastConnectable = true;
+          ControllerMode = "bredr";
+        };
+        Policy = {
+          AutoEnable = true;
+        };
       };
     };
   };
 
-  # Keyd (Keyboard remapping)
-  services.keyd.enable = true;
-  services.keyd.keyboards.default.settings.main.capslock = "overload(control, esc)";
+  services = {
+    upower.enable = true;
+    power-profiles-daemon.enable = true;
+    # Keyd (Keyboard remapping)
+    keyd.enable = true;
+    keyd.keyboards.default.settings.main.capslock = "overload(control, esc)";
+  };
 
   # Keyd Fix for Touchpad
   environment.etc."libinput/local-overrides.quirks".text = ''
@@ -41,9 +46,6 @@
     MatchUdevType=keyboard
     AttrKeyboardIntegration=internal
   '';
-
-  services.upower.enable = true;
-  services.power-profiles-daemon.enable = true;
 
   environment.systemPackages = with pkgs; [
     webcamoid

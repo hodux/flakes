@@ -1,12 +1,12 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 
-# Networking
 {
+  # Virtualisation
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
+
+  # Networking
   networking = {
     networkmanager = {
       enable = true;
@@ -30,6 +30,7 @@
     # For thunar
     gvfs.enable = true;
     envfs.enable = true;
+    tumbler.enable = true;
     # Enable CUPS to print documents.
     printing = {
       enable = true;
@@ -42,7 +43,6 @@
         "9.9.9.9"
       ];
     };
-
   };
 
   # User Account
@@ -95,7 +95,20 @@
 
   # Core Programs
   programs = {
+    dconf.enable = true;
+    xfconf.enable = true;
     fish.enable = true;
+    thunar.enable = true;
+    thunar.plugins = with pkgs; [
+      thunar-volman
+      thunar-archive-plugin
+    ];
+    git = {
+      enable = true;
+      config = {
+        init.defaultBranch = "main";
+      };
+    };
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [
       # Add any missing dynamic libraries for unpackaged programs

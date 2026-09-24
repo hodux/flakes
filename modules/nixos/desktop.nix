@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -12,10 +7,11 @@
 
   services.sysc-greet = {
     enable = true;
-    compositor = "niri";  # or "hyprland" or "sway"
+    compositor = "niri"; # or "hyprland" or "sway"
   };
 
   # authentication agent for gparted
+  security.polkit.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "gnome-authentication-agent-1";
     wantedBy = [ "graphical-session.target" ];
@@ -26,28 +22,9 @@
     };
   };
 
-  # waynergy systemd service
-  # systemd.user.services.waynergy = {
-  #   description = "waynergy-client";
-  #   wantedBy = [ "graphical-session.target" ];
-  #   serviceConfig = {
-  #     ExecStart = "${pkgs.waynergy}/bin/waynergy -c 10.0.0.57 --enable-crypto --enable-tofu -b uinput";
-  #     Restart = "on-failure";
-  #     RestartSec = 5;
-  #   };
-  # };
-
   # Window Managers
   programs.niri = {
     enable = true;
-  };
-
-  security.polkit.enable = true;
-
-  # Graphics
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
   };
 
   # Audio

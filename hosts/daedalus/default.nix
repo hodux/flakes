@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -13,34 +13,40 @@
   home-manager.users.rintaro.imports = [
     ./home.nix
   ];
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-  boot.kernelModules = [ "snd-virmidi" ];
+  boot = {
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+    kernelModules = [ "snd-virmidi" ];
+  };
 
-  hardware.amdgpu.initrd.enable = true;
-  hardware.enableAllFirmware = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
-  hardware.amdgpu.overdrive.enable = true;
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
+  hardware = {
+    amdgpu.initrd.enable = true;
+    enableAllFirmware = true;
+    graphics.extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
+    amdgpu.overdrive.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    wooting.enable = true;
   };
 
   programs.gamemode.enable = true;
-  hardware.wooting.enable = true;
   powerManagement.cpuFreqGovernor = "performance";
-  services.ananicy = {
-    enable = true;
-    package = pkgs.ananicy-cpp;
-    rulesProvider = pkgs.ananicy-rules-cachyos;
+  services = {
+    ananicy = {
+      enable = true;
+      package = pkgs.ananicy-cpp;
+      rulesProvider = pkgs.ananicy-rules-cachyos;
+    };
+    lact.enable = true;
+
+    # VR
+    # wivrn.enable = true;
+    # wivrn.openFirewall = true;
   };
 
-  services.lact.enable = true;
-  # services.wivrn.enable = true;
-  # services.wivrn.openFirewall = true;
-  # programs.weylus.enable = true;
-  # programs.weylus.openFirewall = true;
   environment.systemPackages = with pkgs; [
     prismlauncher
     wootility

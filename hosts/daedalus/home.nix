@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   home.file.".config/noctalia/extra.toml".text = ''

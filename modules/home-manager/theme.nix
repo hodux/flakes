@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   home.pointerCursor = {
@@ -37,5 +37,4 @@
       button-layout = ":minimize,maximize,close";
     };
   };
-
 }

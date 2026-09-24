@@ -1,29 +1,9 @@
-{
-  inputs,
-  config,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-  programs.wireshark.enable = true;
-  programs.wireshark.dumpcap.enable = true;
-  programs.dconf.enable = true;
-  programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs; [
-    thunar-volman
-    thunar-archive-plugin
-  ];
-  services.tumbler.enable = true;
-  programs.xfconf.enable = true;
-  programs.git = {
-    enable = true;
-    config = {
-      init.defaultBranch = "main";
-    };
+  programs = {
+    wireshark.enable = true;
+    wireshark.dumpcap.enable = true;
   };
 
   # List packages installed in system profile.
