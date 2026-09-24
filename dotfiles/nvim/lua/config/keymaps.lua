@@ -19,7 +19,6 @@ vim.keymap.set("n", "<leader>te", function()
   vim.fn.jobstart({ "thunar", root }, { detach = true })
 end, { desc = "Open External File Manager (Thunar)" })
 
-
 if vim.g.vscode then
   local vscode = require("vscode")
 
