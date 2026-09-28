@@ -10,7 +10,7 @@ input {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
             layout "us,ca"
-            options "grp:ctrl_alt_toggle,ctrl:nocaps"
+            options "grp:alt_shift_toggle,ctrl:nocaps"
         }
         // Enable numlock on startup, omitting this setting disables it.
         numlock
@@ -206,11 +206,14 @@ blur {
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
 
-// hide the winapps marker window
+// Windows VM / Office (dedicated column)
 window-rule {
-    match title="RemoteApp Marker Window"
-    open-floating true
-    open-on-workspace "ghost"
+    match app-id="remote-viewer"
+    match app-id="virt-viewer"
+    match app-id="spicy"
+    match app-id=r#"^org\.remmina\.Remmina$"#
+    match title=r#"on QEMU/KVM$"#
+    default-column-width { proportion 1.0; }
 }
 
 // attention needed windows
@@ -228,13 +231,6 @@ window-rule {
     }
 }
 
-// floating windows
-window-rule {
-  match app-id="Microsoft Word"
-  match app-id="Microsoft PowerPoint"
-  match app-id="Microsoft Excel"
-  open-floating true
-}
 
 // blur all windows (only visible on transparent windows)
 window-rule {
@@ -275,6 +271,11 @@ window-rule {
     match app-id="thunar"
     match app-id="mousepad"
     default-column-width { fixed 600; }
+}
+
+window-rule {
+    match app-id="^resolve$"
+    open-floating true
 }
 
 binds {

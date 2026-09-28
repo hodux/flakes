@@ -4,6 +4,7 @@
   # Virtualisation
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
 
   # Networking
@@ -99,6 +100,7 @@
     xfconf.enable = true;
     fish.enable = true;
     thunar.enable = true;
+    gamescope.enable = true;
     thunar.plugins = with pkgs; [
       thunar-volman
       thunar-archive-plugin

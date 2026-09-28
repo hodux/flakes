@@ -32,6 +32,7 @@
     statix
     stylua
     typescript-language-server
+    vtsls
     pyright
     luarocks
     pipx
@@ -39,6 +40,10 @@
     markdown-toc
     markdownlint-cli2
     prettier
+    docker-language-server
+    tailwindcss-language-server
+    marksman
+    taplo
 
     # Shell
     kitty
@@ -92,8 +97,12 @@
     gnome-themes-extra
     libnotify
     udiskie
-    # inputs.winapps.packages."${pkgs.stdenv.hostPlatform.system}".winapps
-    # inputs.winapps.packages."${pkgs.stdenv.hostPlatform.system}".winapps-launcher # optional
+
+    # Virtualization & Remote Desktop
+    virt-viewer
+    spice-gtk
+    virtio-win
+    quickemu
 
     # Network & Storage
     android-tools

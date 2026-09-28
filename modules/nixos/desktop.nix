@@ -11,7 +11,6 @@
   };
 
   # authentication agent for gparted
-  security.polkit.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "gnome-authentication-agent-1";
     wantedBy = [ "graphical-session.target" ];
@@ -30,10 +29,7 @@
   # Audio
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
   };
 
   # Fonts

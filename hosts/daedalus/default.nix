@@ -22,6 +22,7 @@
     amdgpu.initrd.enable = true;
     enableAllFirmware = true;
     graphics.extraPackages = with pkgs; [
+      mesa.opencl
       rocmPackages.clr.icd
     ];
     amdgpu.overdrive.enable = true;
@@ -56,7 +57,7 @@
     # wayvr
     # xrizer
     # parsec-bin
-    # davinci-resolve
+    davinci-resolve
     # blockbench
 
     # pipewire.jack
