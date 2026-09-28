@@ -123,7 +123,7 @@
     # Editors
     neovim
     vscode
-    jetbrains.idea
+    intellij-idea
 
     # Apps
     obsidian
