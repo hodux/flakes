@@ -54,4 +54,18 @@ return {
       },
     },
   },
+
+  {
+    "folke/snacks.nvim",
+    opts = function(_, opts)
+      if opts.dashboard and opts.dashboard.preset and opts.dashboard.preset.keys then
+        for _, button in ipairs(opts.dashboard.preset.keys) do
+          if button.key == "p" then
+            button.action = ":NeovimProjectDiscover"
+            button.desc = "Projects"
+          end
+        end
+      end
+    end,
+  },
 }
