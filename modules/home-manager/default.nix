@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   dotfiles = "${config.home.homeDirectory}/projects/flakes/dotfiles";
@@ -29,6 +34,7 @@ in
         config.lib.file.mkOutOfStoreSymlink "${dotfiles}/noctalia/noctalia-config.toml";
       ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
       ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux";
+      ".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/idea/.ideavimrc";
     };
   };
 
