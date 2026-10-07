@@ -43,6 +43,7 @@ in
     zen-browser.enable = true;
     spicetify = {
       enable = true;
+      wayland = true;
       enabledExtensions = with spicePkgs.extensions; [
         adblockify
         hidePodcasts
@@ -117,26 +118,6 @@ in
           "System"
           "Utility"
         ];
-      };
-
-      # temp fix for popups' wrong positioning
-      "spotify" = {
-        name = "Spotify";
-        genericName = "Music Player";
-        comment = "Play music using Spotify";
-        exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        icon = "spotify-client";
-        type = "Application";
-        categories = [
-          "Audio"
-          "Music"
-          "Player"
-          "AudioVideo"
-        ];
-        settings = {
-          StartupWMClass = "spotify";
-          Version = "1.5";
-        };
       };
 
       "lmms" = {
