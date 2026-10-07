@@ -1,26 +1,46 @@
 return {
+  -- default colorscheme
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "wildcharm",
+    },
+  },
+
   -- nix over mason
   { "mason-org/mason-lspconfig.nvim", enabled = false },
-  -- disable <leader><space> for file picker, makes which key show up faster
-  keys = { { "<leader><space>", false }, { "<leader><leader>", false } },
 
   {
     "neovim/nvim-lspconfig",
     opts = {
+      -- disable inlay hints by default
+      inlay_hints = {
+        enabled = false,
+      },
       servers = {
+        -- use nixd instead of nil
         nil_ls = { enabled = false },
         nixd = {},
+        -- disable placeholders
+        gopls = {
+          settings = {
+            gopls = {
+              usePlaceholders = false,
+            },
+          },
+        },
       },
     },
   },
 
-  -- custom layout for file picker
+  -- disable <leader><space> for file picker, makes "which key" show up faster
+  keys = { { "<leader><space>", false }, { "<leader><leader>", false } },
+
+  -- custom layout for file picker & dashboard use neovim-project
   {
     "folke/snacks.nvim",
-    opts = {
-      picker = {
-        -- hidden = true,
-        -- ignored = true,
+    opts = function(_, opts)
+      opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
         ui_select = false,
         layout = {
           { preview = true },
@@ -43,21 +63,11 @@ return {
           explorer = {
             cycle = true,
             auto_close = true,
-            -- hidden = true,
-            -- ignored = true,
           },
-          files = {
-            -- hidden = true,
-            -- ignored = true,
-          },
+          files = {},
         },
-      },
-    },
-  },
+      })
 
-  {
-    "folke/snacks.nvim",
-    opts = function(_, opts)
       if opts.dashboard and opts.dashboard.preset and opts.dashboard.preset.keys then
         for _, button in ipairs(opts.dashboard.preset.keys) do
           if button.key == "p" then
@@ -66,6 +76,8 @@ return {
           end
         end
       end
+
+      return opts
     end,
   },
 }

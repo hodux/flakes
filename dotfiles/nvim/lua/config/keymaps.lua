@@ -3,22 +3,28 @@
 -- Add any additional keymaps here
 
 vim.keymap.set({ "n", "v" }, ";", ":", { desc = "Enter Command Mode" })
+vim.keymap.set("n", "Q", function()
+  Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank line to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste before from system clipboard" })
 
+-- open external terminal (kitty)
 vim.keymap.set("n", "<leader>tk", function()
   local root = LazyVim.root()
   vim.fn.jobstart({ "kitty", "--directory", root }, { detach = true })
 end, { desc = "Open External Terminal (kitty)" })
 
+-- open external file manager (thunar)
 vim.keymap.set("n", "<leader>te", function()
   local root = LazyVim.root()
   vim.fn.jobstart({ "thunar", root }, { detach = true })
 end, { desc = "Open External File Manager (Thunar)" })
 
+-- for vscode neovim extension
 if vim.g.vscode then
   local vscode = require("vscode")
 
@@ -116,7 +122,7 @@ if vim.g.vscode then
     vscode.action("workbench.action.editor.nextChange")
   end, { desc = "Next Change" })
 else
-  -- Standalone Neovim keymaps
+  -- neovim only
   vim.keymap.set("n", "<C-p>", LazyVim.pick("files"), { desc = "Find Files (Root Dir)" })
 
   vim.keymap.set("n", "<leader>fp", "<cmd>NeovimProjectDiscover<cr>", { desc = "Switch Project (Workspace)" })

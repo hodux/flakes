@@ -1,4 +1,29 @@
 return {
+  -- helix theme
+  { "oneslash/helix-nvim", version = "*" },
+
+  -- gitsigns scrollbar
+  {
+    "petertriho/nvim-scrollbar",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = {
+      "kevinhwang91/nvim-hlslens",
+    },
+    opts = {
+      handlers = {
+        cursor = true,
+        diagnostic = true,
+        gitsigns = true,
+        search = true,
+      },
+    },
+    config = function(_, opts)
+      require("hlslens").setup()
+      require("scrollbar").setup(opts)
+    end,
+  },
+
+  -- vscode-like project switching
   {
     "coffebar/neovim-project",
     opts = {
