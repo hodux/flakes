@@ -1,6 +1,3 @@
-# theme
-include Campbell.conf
-
 # cursor
 cursor_shape beam
 cursor_trail 1
@@ -61,3 +58,9 @@ bold_font        auto
 italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
+
+
+# BEGIN_KITTY_THEME
+# Later This Evening
+include current-theme.conf
+# END_KITTY_THEME
