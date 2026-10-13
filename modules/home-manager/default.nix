@@ -65,17 +65,17 @@ in
         "x-scheme-handler/unknown" = "zen-beta.desktop";
         "application/xhtml+xml" = "zen-beta.desktop";
 
-        "image/jpeg" = "org.pwmt.zathura.desktop";
-        "image/png" = "org.pwmt.zathura.desktop";
-        "image/gif" = "org.pwmt.zathura.desktop";
-        "image/webp" = "org.pwmt.zathura.desktop";
-        "image/svg+xml" = "org.pwmt.zathura.desktop";
-        "image/bmp" = "org.pwmt.zathura.desktop";
-        "image/tiff" = "org.pwmt.zathura.desktop";
+        "image/jpeg" = "org.kde.okular";
+        "image/png" = "org.kde.okular";
+        "image/gif" = "org.kde.okular";
+        "image/webp" = "org.kde.okular";
+        "image/svg+xml" = "org.kde.okular";
+        "image/bmp" = "org.kde.okular";
+        "image/tiff" = "org.kde.okular";
 
-        "application/pdf" = "org.pwmt.zathura.desktop";
-        "application/epub+zip" = "org.pwmt.zathura.desktop";
-        "application/postscript" = "org.pwmt.zathura.desktop";
+        "application/pdf" = "org.kde.okular";
+        "application/epub+zip" = "org.kde.okular";
+        "application/postscript" = "org.kde.okular";
 
         "inode/directory" = "thunar.desktop";
 

@@ -135,9 +135,11 @@
     scrcpy
     ffmpeg
     wine
-    zathura
+    kdePackages.okular
     pureref
     mousepad
+    protonvpn-gui
+    packwiz
 
     # Infra
     kubectl

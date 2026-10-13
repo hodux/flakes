@@ -266,11 +266,13 @@ window-rule {
     opacity 0.90
 }
 
-// Thunar + Mousepad fixed size
+// fixed size windows
 window-rule {
     match app-id="thunar"
     match app-id="mousepad"
-    default-column-width { fixed 600; }
+    match app-id="org.gnome.FileRoller"
+    match app-id="org.prismlauncher.PrismLauncher"
+    default-column-width { fixed 720; }
 }
 
 window-rule {
