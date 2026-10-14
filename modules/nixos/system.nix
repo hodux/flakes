@@ -1,12 +1,7 @@
 { pkgs, ... }:
 
 {
-  # Virtualisation
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.docker.enable = true;
-
+  time.timeZone = "America/Toronto";
   # Networking
   networking = {
     networkmanager = {
@@ -21,7 +16,7 @@
     # };
   };
 
-  time.timeZone = "America/Toronto";
+  # Services
   services = {
     udisks2 = {
       enable = true;
@@ -64,7 +59,8 @@
     shell = pkgs.fish;
   };
 
-  # Nix Settings (Flakes, Garbage Collection, etc)
+  # Nix Settings
+  nixpkgs.config.allowUnfree = true;
   nix.settings = {
     experimental-features = [
       "nix-command"
@@ -86,13 +82,11 @@
     ];
   };
 
-  # Automatic GC a week
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
-  };
-  nixpkgs.config.allowUnfree = true;
+  # Virtualisation
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.docker.enable = true;
 
   # Core Programs
   programs = {
@@ -100,6 +94,8 @@
     xfconf.enable = true;
     fish.enable = true;
     thunar.enable = true;
+    wireshark.enable = true;
+    wireshark.dumpcap.enable = true;
     gamescope.enable = true;
     thunar.plugins = with pkgs; [
       thunar-volman
@@ -131,12 +127,11 @@
   documentation.man.cache.enable = false;
 
   # Swap
+  zramSwap.enable = true;
   swapDevices = [
     {
       device = "/var/lib/swapfile";
       size = 4 * 1024;
     }
   ];
-  zramSwap.enable = true;
-
 }

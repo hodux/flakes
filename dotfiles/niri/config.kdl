@@ -268,7 +268,7 @@ window-rule {
 
 // fixed size windows
 window-rule {
-    match app-id="thunar"
+    match app-id="Thunar"
     match app-id="mousepad"
     match app-id="org.gnome.FileRoller"
     match app-id="org.prismlauncher.PrismLauncher"

@@ -25,7 +25,7 @@
           ControllerMode = "bredr";
         };
         Policy = {
-          AutoEnable = true;
+          AutoEnable = false;
         };
       };
     };

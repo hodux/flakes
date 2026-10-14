@@ -65,17 +65,17 @@ in
         "x-scheme-handler/unknown" = "zen-beta.desktop";
         "application/xhtml+xml" = "zen-beta.desktop";
 
-        "image/jpeg" = "org.kde.okular";
-        "image/png" = "org.kde.okular";
-        "image/gif" = "org.kde.okular";
-        "image/webp" = "org.kde.okular";
-        "image/svg+xml" = "org.kde.okular";
-        "image/bmp" = "org.kde.okular";
-        "image/tiff" = "org.kde.okular";
+        "image/jpeg" = "org.xfce.ristretto.desktop";
+        "image/png" = "org.xfce.ristretto.desktop";
+        "image/gif" = "org.xfce.ristretto.desktop";
+        "image/webp" = "org.xfce.ristretto.desktop";
+        "image/svg+xml" = "org.xfce.ristretto.desktop";
+        "image/bmp" = "org.xfce.ristretto.desktop";
+        "image/tiff" = "org.xfce.ristretto.desktop";
 
-        "application/pdf" = "org.kde.okular";
-        "application/epub+zip" = "org.kde.okular";
-        "application/postscript" = "org.kde.okular";
+        "application/pdf" = "atril.desktop";
+        "application/epub+zip" = "atril.desktop";
+        "application/postscript" = "atril.desktop";
 
         "inode/directory" = "thunar.desktop";
 
@@ -90,12 +90,12 @@ in
         "text/xml" = "org.xfce.mousepad.desktop";
         "application/xml" = "org.xfce.mousepad.desktop";
 
-        "video/mp4" = "vlc.desktop";
-        "video/x-matroska" = "vlc.desktop";
-        "video/webm" = "vlc.desktop";
-        "audio/mpeg" = "vlc.desktop";
-        "audio/flac" = "vlc.desktop";
-        "audio/x-wav" = "vlc.desktop";
+        "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
+        "video/x-matroska" = "vio.github.celluloid_player.Celluloid.desktop";
+        "video/webm" = "vio.github.celluloid_player.Celluloid.desktop";
+        "audio/mpeg" = "vio.github.celluloid_player.Celluloid.desktop";
+        "audio/flac" = "vio.github.celluloid_player.Celluloid.desktop";
+        "audio/x-wav" = "vio.github.celluloid_player.Celluloid.desktop";
 
         "application/zip" = "org.gnome.FileRoller.desktop";
         "application/x-tar" = "org.gnome.FileRoller.desktop";
@@ -118,25 +118,6 @@ in
           "System"
           "Utility"
         ];
-      };
-
-      "lmms" = {
-        name = "LMMS";
-        genericName = "Digital Audio Workstation";
-        comment = "Easy music creation for everyone";
-        exec = "${pkgs.pipewire.jack}/bin/pw-jack ${pkgs.lmms}/bin/lmms %f";
-        icon = "lmms";
-        type = "Application";
-        categories = [
-          "AudioVideo"
-          "Audio"
-          "Midi"
-        ];
-        mimeType = [ "application/x-lmms-project" ];
-        settings = {
-          StartupWMClass = "lmms";
-          Version = "1.5";
-        };
       };
 
       "nvim" = {

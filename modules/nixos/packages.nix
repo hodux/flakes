@@ -1,169 +1,154 @@
 { pkgs, ... }:
 
 {
-  programs = {
-    wireshark.enable = true;
-    wireshark.dumpcap.enable = true;
-  };
-
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    # langs (should be with nix develop)
-    nodejs_24
+    # Languages & Package Managers
     bun
-    go
-    lua5_1
-    rustc
     cargo
-    python3
+    go
     gradle
     jdk21
+    lua5_1
+    luarocks
     maven
+    nodejs_24
+    pipx
+    python3
+    rustc
 
-    # lsps (should be with nix develop)
-    tree-sitter
-    lua-language-server
-    vscode-langservers-extracted
+    # LSPs, Linters & Formatters
+    ast-grep
+    docker-language-server
+    golangci-lint
     gopls
     jdt-language-server
-    nixfmt
-    nixd
-    statix
-    stylua
-    typescript-language-server
-    vtsls
-    pyright
-    luarocks
-    pipx
-    golangci-lint
+    lua-language-server
     markdown-toc
     markdownlint-cli2
-    prettier
-    docker-language-server
-    tailwindcss-language-server
     marksman
+    nixd
+    nixfmt
+    prettier
+    pyright
+    statix
+    stylua
+    tailwindcss-language-server
     taplo
+    tree-sitter
+    vscode-langservers-extracted
+    vtsls
+    yamllint
 
-    # Shell
-    kitty
-    tmux
-    sesh
-    eza
-    zoxide
-    direnv
-    fzf
-    bat
-    yazi
-    tldr
-    file
-    ripgrep
-    ast-grep
-    tectonic
-    ghostscript
-    fd
-    jq
-
-    # Core
-    lazygit
-    gh
+    # Compilers, Build Tools & Git
     act
-    gcc
-    gnumake
     cmake
+    gcc
+    gh
+    gnumake
+    lazygit
     openssl
-    sqlite
-
-    # System & Monitoring
-    btop
-    lsof
-    ddcutil
-    wlopm
-    brightnessctl
-    playerctl
-    pavucontrol
-    libinput
-    gparted
-    libqalculate
-    gnome-keyring
-
-    # Wayland
-    hyprpicker
-    wl-clipboard
-    wl-mirror
-    xwayland-satellite
-    glib
-    gsettings-desktop-schemas
-    gnome-themes-extra
-    libnotify
-    udiskie
-
-    # Virtualization & Remote Desktop
-    virt-viewer
-    spice-gtk
-    virtio-win
-    quickemu
-
-    # Network & Storage
-    android-tools
-    curl
-    wget
-    traceroute
-    dig
-    sshfs
-    smbclient-ng
-    p7zip
-    unzip
-    unrar
-    file-roller
-    ngrok
-    networkmanager-openconnect
-    networkmanagerapplet
-
-    # Editors
-    neovim
-    vscode
-    intellij-idea
-
-    # Apps
-    obsidian
-    vesktop
-    onlyoffice-desktopeditors
-    obs-studio
-    vlc
-    gimp
-    scrcpy
-    ffmpeg
-    wine
-    kdePackages.okular
-    pureref
-    mousepad
-    protonvpn-gui
     packwiz
 
-    # Infra
+    # Editors & IDEs
+    intellij-idea
+    mousepad
+    neovim
+    vscode
+
+    # Terminal, Shell & CLI Utilities
+    direnv
+    eza
+    fd
+    file
+    fzf
+    jq
+    kitty
+    ripgrep
+    # sesh
+    tldr
+    tmux
+    zoxide
+
+    # Infrastructure, Cloud & Databases
     kubectl
     kubelogin-oidc
     kustomize
-    talosctl
     opentofu
+    talosctl
     vault-bin
-    hugo
-    mongosh
-    yamllint
-    jinja2-cli
-    dialog
+    sqlite
 
-    # AI
-    lmstudio
-    opencode
+    # AI & LLM Tools
     antigravity-cli
+    opencode
+    ollama
 
-    # rice
-    fastfetch
-    cmatrix
+    # Networking & VPN
+    curl
+    dig
+    networkmanager-openconnect
+    proton-vpn
+    smbclient-ng
+    sshfs
+    traceroute
+    wget
+
+    # Filesystems, Archives & Storage
+    file-roller
+    gparted
+    p7zip
+    mongosh
+    unrar
+    unzip
+
+    # System, Hardware & Audio/Video Controls
+    android-tools
+    brightnessctl
+    btop
+    ddcutil
+    libinput
+    libqalculate
+    lsof
+    pavucontrol
+    playerctl
+    scrcpy
+
+    # Wayland & Desktop Environment
+    glib
+    gnome-keyring
+    gnome-themes-extra
+    gsettings-desktop-schemas
+    hyprpicker
+    libnotify
+    wl-clipboard
+    wl-mirror
+    wlopm
+    xwayland-satellite
+
+    # Virtualization & Compatibility
+    wine
+
+    # Media, Graphics & Document Processing
+    ffmpeg
+    ghostscript
+    gimp
+    hugo
+    atril
+    ristretto
+    obs-studio
+    obsidian
+    onlyoffice-desktopeditors
+    pureref
+    tectonic
+    vesktop
+    celluloid
+
+    # --- Eye Candy / Rice ---
     ansilove
-    unipicker
+    cmatrix
+    fastfetch
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
