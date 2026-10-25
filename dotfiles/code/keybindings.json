@@ -15,5 +15,25 @@
     {
         "key": "ctrl+k",
         "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u0005" },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u0010" },
+        "when": "terminalFocus"
     }
 ]

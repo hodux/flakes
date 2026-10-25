@@ -3,9 +3,6 @@
 -- Add any additional keymaps here
 
 vim.keymap.set({ "n", "v" }, ";", ":", { desc = "Enter Command Mode" })
-vim.keymap.set("n", "Q", function()
-  Snacks.bufdelete()
-end, { desc = "Delete Buffer" })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank line to system clipboard" })
@@ -63,6 +60,9 @@ if vim.g.vscode then
   end, { desc = "Search Word" })
 
   -- Buffers / Editors
+  vim.keymap.set("n", "Q", function()
+    vscode.action("workbench.action.closeActiveEditor")
+  end, { desc = "Close Editor" })
   vim.keymap.set("n", "<leader>bd", function()
     vscode.action("workbench.action.closeActiveEditor")
   end, { desc = "Close Editor" })
@@ -121,8 +121,20 @@ if vim.g.vscode then
   vim.keymap.set("n", "]h", function()
     vscode.action("workbench.action.editor.nextChange")
   end, { desc = "Next Change" })
+
+  -- Terminal
+  vim.keymap.set({ "n", "t" }, "<C-/>", function()
+    vscode.action("workbench.action.terminal.toggleTerminal")
+  end, { desc = "Toggle Terminal" })
+  vim.keymap.set({ "n", "t" }, "<C-_>", function()
+    vscode.action("workbench.action.terminal.toggleTerminal")
+  end, { desc = "Toggle Terminal" })
 else
   -- neovim only
+  vim.keymap.set("n", "Q", function()
+    Snacks.bufdelete()
+  end, { desc = "Delete Buffer" })
+
   vim.keymap.set("n", "<C-p>", LazyVim.pick("files"), { desc = "Find Files (Root Dir)" })
 
   vim.keymap.set("n", "<leader>fp", "<cmd>NeovimProjectDiscover<cr>", { desc = "Switch Project (Workspace)" })
