@@ -31,5 +31,7 @@
             }
             }
         }
-    }
+    },
+    "svelte.enable-ts-plugin": true,
+    "workbench.colorTheme": "Visual Studio Dark"
 }
