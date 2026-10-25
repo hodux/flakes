@@ -50,6 +50,7 @@
     lazygit
     openssl
     packwiz
+    protobuf
 
     # Editors & IDEs
     intellij-idea
@@ -70,6 +71,7 @@
     tldr
     tmux
     zoxide
+    pgcli
 
     # Infrastructure, Cloud & Databases
     kubectl
@@ -79,16 +81,17 @@
     talosctl
     vault-bin
     sqlite
+    networkmanagerapplet
 
     # AI & LLM Tools
     antigravity-cli
     opencode
     ollama
+    claude-code
 
     # Networking & VPN
     curl
     dig
-    networkmanager-openconnect
     proton-vpn
     smbclient-ng
     sshfs
@@ -114,6 +117,7 @@
     pavucontrol
     playerctl
     scrcpy
+    dust
 
     # Wayland & Desktop Environment
     glib
@@ -144,6 +148,7 @@
     tectonic
     vesktop
     celluloid
+    ink
 
     # --- Eye Candy / Rice ---
     ansilove
