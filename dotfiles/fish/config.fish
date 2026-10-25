@@ -1,6 +1,6 @@
 set -gx EDITOR nvim
 fish_add_path -a $HOME/.krew/bin
-fish_add_path -a $HOME/.lmstudio/bin
+fish_add_path -a $HOME/go/bin
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
