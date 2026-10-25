@@ -9,6 +9,12 @@
       dns = "systemd-resolved";
       plugins = [ pkgs.networkmanager-openconnect ];
     };
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
     # wg-quick.interfaces = {
     #   user07 = {
     #     configFile = "/etc/wireguard/user07.conf";
@@ -32,13 +38,7 @@
       enable = true;
       drivers = [ pkgs.gutenprint ];
     };
-    resolved = {
-      enable = true;
-      fallbackDns = [
-        "1.1.1.1"
-        "9.9.9.9"
-      ];
-    };
+    resolved.enable = true;
   };
 
   # User Account
