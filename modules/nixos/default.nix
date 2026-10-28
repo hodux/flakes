@@ -8,6 +8,7 @@
     ./hardware.nix
     ./packages.nix
     ./system.nix
+    ./languages.nix
     # ./cybersec.nix
   ];
 

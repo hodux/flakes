@@ -2,50 +2,26 @@
 
 {
   time.timeZone = "America/Toronto";
-  # Networking
-  networking = {
-    networkmanager = {
-      enable = true;
-      dns = "systemd-resolved";
-      plugins = [ pkgs.networkmanager-openconnect ];
-    };
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "8.8.8.8"
-      "8.8.4.4"
-    ];
-    # wg-quick.interfaces = {
-    #   user07 = {
-    #     configFile = "/etc/wireguard/user07.conf";
-    #   };
-    # };
+
+  # Nix
+  nixpkgs.config.allowUnfree = true;
+
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
+    download-buffer-size = 524288000;
   };
 
-  # Services
-  services = {
-    udisks2 = {
-      enable = true;
-      # Optional: if you want it to show up specifically in /media instead of /run/media
-      mountOnMedia = true;
-    };
-    # For thunar
-    gvfs.enable = true;
-    envfs.enable = true;
-    tumbler.enable = true;
-    # Enable CUPS to print documents.
-    printing = {
-      enable = true;
-      drivers = [ pkgs.gutenprint ];
-    };
-    resolved.enable = true;
-  };
+  # this avoids slow rebuilds from fish generating man caches
+  documentation.man.cache.enable = false;
 
-  # User Account
+  # Users
   users.users.rintaro = {
     isNormalUser = true;
+    shell = pkgs.fish;
     extraGroups = [
       "wheel"
+      "networkmanager"
       "docker"
       "libvirtd"
       "kvm"
@@ -54,63 +30,59 @@
       "wireshark"
       "i2c"
       "adbusers"
-      "networkmanager"
     ];
-    shell = pkgs.fish;
   };
 
-  # Nix Settings
-  nixpkgs.config.allowUnfree = true;
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    download-buffer-size = 524288000;
-    auto-optimise-store = true;
-    substituters = [
-      "https://cache.nixos.org"
-      "https://attic.xuyh0120.win/lantian"
-      "https://cache.xinux.uz"
-      "https://noctalia.cachix.org"
-    ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-      "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-    ];
+  # Networking
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "8.8.8.8"
+    "8.8.4.4"
+  ];
+
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+    plugins = [ pkgs.networkmanager-openconnect ];
+  };
+
+  services.resolved.enable = true;
+
+  # Services
+  services.gnome.gnome-keyring.enable = true;
+  services.envfs.enable = true;
+  services.ollama.enable = true;
+
+  services.udisks2 = {
+    enable = true;
+    mountOnMedia = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.gutenprint ];
   };
 
   # Virtualisation
   programs.virt-manager.enable = true;
+  virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.docker.enable = true;
 
-  # Core Programs
-  programs = {
-    dconf.enable = true;
-    xfconf.enable = true;
-    fish.enable = true;
-    thunar.enable = true;
-    wireshark.enable = true;
-    wireshark.dumpcap.enable = true;
-    gamescope.enable = true;
-    thunar.plugins = with pkgs; [
-      thunar-volman
-      thunar-archive-plugin
-    ];
-    git = {
-      enable = true;
-      config = {
-        init.defaultBranch = "main";
-      };
-    };
-    nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [
-      # Add any missing dynamic libraries for unpackaged programs
-      # here, NOT in environment.systemPackages
+  # Development
+  programs.fish.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  programs.git = {
+    enable = true;
+    config.init.defaultBranch = "main";
+  };
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
       stdenv.cc.cc.lib
       stdenv.cc
       zlib
@@ -122,9 +94,6 @@
       expat
     ];
   };
-
-  # To avoid fish long rebuild times
-  documentation.man.cache.enable = false;
 
   # Swap
   zramSwap.enable = true;

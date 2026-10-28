@@ -2,59 +2,61 @@
 
 {
   imports = [
-    inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
     ../../modules/nixos
     ./hardware-configuration.nix
+    # inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
+  ];
+
+  home-manager.users.rintaro.imports = [
+    ./home.nix
   ];
 
   networking.hostName = "daedalus";
   system.stateVersion = "25.05";
 
-  home-manager.users.rintaro.imports = [
-    ./home.nix
-  ];
   boot = {
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
     kernelModules = [ "snd-virmidi" ];
   };
 
-  hardware = {
-    amdgpu.initrd.enable = true;
-    enableAllFirmware = true;
-    graphics.extraPackages = with pkgs; [
-      mesa.opencl
-      rocmPackages.clr.icd
-    ];
-    amdgpu.overdrive.enable = true;
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-    wooting.enable = true;
+  hardware.wooting.enable = true;
+  hardware.enableAllFirmware = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
   };
+  hardware.amdgpu = {
+    initrd.enable = true;
+    overdrive.enable = true;
+  };
+  hardware.graphics.extraPackages = with pkgs; [
+    mesa.opencl
+    rocmPackages.clr.icd
+  ];
+
+  powerManagement.cpuFreqGovernor = "performance";
 
   programs.gamemode.enable = true;
-  powerManagement.cpuFreqGovernor = "performance";
-  services = {
-    ananicy = {
+  programs.gamescope.enable = true;
+
+  services.ananicy = {
       enable = true;
       package = pkgs.ananicy-cpp;
       rulesProvider = pkgs.ananicy-rules-cachyos;
     };
-    lact.enable = true;
-    # wivrn.enable = true;
-    # wivrn.openFirewall = true;
-  };
+  services.lact.enable = true;
+  # services.wivrn.enable = true;
+  # services.wivrn.openFirewall = true;
 
   environment.systemPackages = with pkgs; [
-    # wayvr
-    # xrizer
-    prismlauncher
-    wootility
-    protonup-qt
-    lutris
-    # parsec-bin
-    davinci-resolve
     # blockbench
+    davinci-resolve
+    lutris
+    prismlauncher
+    protonup-qt
+    # wayvr
+    wine
+    wootility
+    # xrizer
   ];
 }

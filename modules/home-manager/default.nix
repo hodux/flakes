@@ -90,12 +90,12 @@ in
         "text/xml" = "org.xfce.mousepad.desktop";
         "application/xml" = "org.xfce.mousepad.desktop";
 
-        "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
-        "video/x-matroska" = "vio.github.celluloid_player.Celluloid.desktop";
-        "video/webm" = "vio.github.celluloid_player.Celluloid.desktop";
-        "audio/mpeg" = "vio.github.celluloid_player.Celluloid.desktop";
-        "audio/flac" = "vio.github.celluloid_player.Celluloid.desktop";
-        "audio/x-wav" = "vio.github.celluloid_player.Celluloid.desktop";
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
+        "video/webm" = "mpv.desktop";
+        "audio/mpeg" = "mpv.desktop";
+        "audio/flac" = "mpv.desktop";
+        "audio/x-wav" = "mpv.desktop";
 
         "application/zip" = "org.gnome.FileRoller.desktop";
         "application/x-tar" = "org.gnome.FileRoller.desktop";

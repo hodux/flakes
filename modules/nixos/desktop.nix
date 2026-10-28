@@ -4,7 +4,8 @@
   imports = [
     inputs.sysc-greet.nixosModules.default
   ];
-
+  
+  # Login Manager
   services.sysc-greet = {
     enable = true;
     compositor = "niri"; # or "hyprland" or "sway"
@@ -22,15 +23,34 @@
   };
 
   # Window Managers
-  programs.niri = {
-    enable = true;
-  };
+  programs.niri.enable = true;
 
   # Audio
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
+
+  # Apps
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
+  programs.xfconf.enable = true;
+  programs.dconf.enable = true;
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      thunar-volman
+      thunar-archive-plugin
+    ];
+  };
+
+  programs.wireshark = {
+    enable = true;
+    dumpcap.enable = true;
+  };
+
+  programs.obs-studio.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [
