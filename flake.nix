@@ -30,19 +30,6 @@
     };
   };
 
-  nixConfig = {
-    extra-substituters = [ 
-      "https://cache.lantian.pub/lantian"
-      "https://cache.xinux.uz"
-      "https://noctalia.cachix.org"
-    ];
-    extra-trusted-public-keys = [ 
-      "lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ="
-      "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-    ];
-  };
-
   outputs = { self, nixpkgs, ... }@inputs:
     {
       nixosConfigurations = {

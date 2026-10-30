@@ -10,6 +10,19 @@
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
     download-buffer-size = 524288000;
+    trusted-users = [ "root" "@wheel" ];
+
+      substituters = [
+        "https://cache.nixos.org"
+        "https://cache.lantian.pub/lantian"
+        "https://noctalia.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ="
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      ];
   };
 
   # this avoids slow rebuilds from fish generating man caches
