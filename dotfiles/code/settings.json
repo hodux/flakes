@@ -33,5 +33,6 @@
         }
     },
     "svelte.enable-ts-plugin": true,
-    "workbench.colorTheme": "Visual Studio Dark"
+    "workbench.colorTheme": "Visual Studio Dark",
+    "java.import.gradle.java.home": "/nix/store/56mv72maqaj8j241d98fjcvwswaipfay-openjdk-21.0.12.1+1/lib/openjdk"
 }

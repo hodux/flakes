@@ -7,26 +7,8 @@ order = [ "default"]
 [brightness]
 enable_ddcutil = true
 
-[calendar]
-enabled = true
-
-    [calendar.account.personal_icloud]
-    name = "iCloud Calendar"
-    provider = "icloud"
-    type = "caldav"
-    username = "hoduxs@gmail.com"
-
 [desktop_widgets]
 enabled = false
-schema_version = 2
-widget_order = []
-
-    [desktop_widgets.grid]
-    cell_size = 16
-    major_interval = 4
-    visible = true
-
-    [desktop_widgets.widget]
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -56,6 +38,7 @@ settings_show_advanced = true
     enabled = true
 
 [theme]
+community_palette = "Occult Umbral"
 mode = "light"
 source = "community"
 
@@ -67,11 +50,6 @@ directory = "/home/rintaro/Pictures/Wallpapers"
 
 [widget.date]
 format = "{:%a, %d %b}"
-
-[widget.taskbar]
-capsule = true
-scale = 1.95
-show_all_outputs = true
 
 [widget.tray]
 drawer = true
