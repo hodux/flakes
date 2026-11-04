@@ -111,15 +111,15 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         on
 
-        width 2
+        width 3
         // active-color "#ffc87f"
         // inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
         // urgent-color "#9b0000"
 
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        active-gradient from="#cd3131" to="#ffb300" angle=45
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can enable drop shadows for windows.
@@ -243,7 +243,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 14
     clip-to-geometry true
 }
 
@@ -255,15 +255,7 @@ window-rule {
 // Kitty blur + fixed size
 window-rule {
     match app-id=r#"kitty$"#
-    default-column-width { fixed 700; }
-}
-window-rule {
-    match is-active=false app-id=r#"^kitty"#
-    opacity 0.85
-}
-window-rule {
-    match is-active=true app-id=r#"^kitty"#
-    opacity 0.90
+    default-column-width { fixed 900; }
 }
 
 // fixed size windows
@@ -561,4 +553,4 @@ binds {
 }
 
 
-include "noctalia.kdl"
+

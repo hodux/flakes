@@ -42,9 +42,6 @@ community_palette = "Occult Umbral"
 mode = "light"
 source = "community"
 
-    [theme.templates]
-    builtin_ids = [ "niri" ]
-
 [wallpaper]
 directory = "/home/rintaro/Pictures/Wallpapers"
 
