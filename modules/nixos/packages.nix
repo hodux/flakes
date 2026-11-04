@@ -19,6 +19,7 @@
     fzf
     gh
     jq
+    jujutsu
     kitty
     lazygit
     openssl
@@ -57,15 +58,19 @@
 
     # Desktop Environment
     atril
+    dbeaver-bin
     file-roller
     gimp
     gparted
     hyprpicker
+    mission-center
     mpv
     obsidian
     onlyoffice-desktopeditors
     pureref
     ristretto
+    rnote
+    tracy
     vesktop
     webcamoid
     wl-clipboard
