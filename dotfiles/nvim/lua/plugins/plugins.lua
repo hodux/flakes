@@ -1,7 +1,4 @@
 return {
-  -- helix theme
-  { "oneslash/helix-nvim", version = "*" },
-
   -- gitsigns scrollbar
   {
     "petertriho/nvim-scrollbar",

@@ -38,7 +38,7 @@ settings_show_advanced = true
     enabled = true
 
 [theme]
-community_palette = "Occult Umbral"
+community_palette = "Inabakumori"
 mode = "light"
 source = "community"
 

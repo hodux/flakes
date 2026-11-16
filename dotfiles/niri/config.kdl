@@ -118,7 +118,7 @@ layout {
         // Color of the border around windows that request your attention.
         // urgent-color "#9b0000"
 
-        active-gradient from="#0037ff" to="#ffb300" angle=90
+        active-gradient from="#ef8317" to="#8d1cf7" angle=90
         inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
@@ -260,11 +260,13 @@ window-rule {
 
 // fixed size windows
 window-rule {
-    match app-id="thunar"
-    match app-id="mousepad"
+    match app-id="org.gnome.Nautilus"
+    match app-id="org.gnome.TextEditor"
     match app-id="org.gnome.FileRoller"
     match app-id="org.prismlauncher.PrismLauncher"
-    default-column-width { fixed 720; }
+    match app-id="org.prismlauncher.PrismLauncher"
+    match app-id="net.lutris.Lutris"
+    default-column-width { fixed 820; }
 }
 
 window-rule {
@@ -285,8 +287,8 @@ binds {
         spawn "kitty" "--class" "kitty-nvim" "-e" "nvim"; }
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" {
         spawn "kitty"; }
-    Mod+E hotkey-overlay-title="Open Thunar" {
-        spawn "thunar"; }
+    Mod+E hotkey-overlay-title="Open File Explorer: Nautilus" {
+        spawn "nautilus"; }
     Mod+Space repeat=false hotkey-overlay-title="Run an Application" {
         spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+M hotkey-overlay-title="Open Session Menu" {
@@ -299,6 +301,9 @@ binds {
     // Mod+Ctrl+P { spawn "niri-scratchpad" "delete" "1"; }
     // Mod+G { spawn "niri-scratchpad" "create" "2"; }
     // Mod+Ctrl+G { spawn "niri-scratchpad" "delete" "2"; }
+
+    // dynamic screen sharing target
+    Mod+Ctrl+W hotkey-overlay-title="Change screen-sharing target" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg -j focused-window | jq .id)"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

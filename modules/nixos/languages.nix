@@ -18,6 +18,7 @@
     gopls
     jdt-language-server
     lua-language-server
+    ltex-ls-plus
     marksman
     nixd
     pyright
@@ -25,7 +26,7 @@
     taplo
     vscode-langservers-extracted
     vtsls
-    
+
     # Linters
     golangci-lint
     markdownlint-cli2
@@ -36,12 +37,12 @@
     nixfmt
     prettier
     stylua
-    
+
     # Parsing
     ast-grep
     markdown-toc
     tree-sitter
-    
+
     # Compilers & Build Tools
     cmake
     gcc

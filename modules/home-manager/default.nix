@@ -65,37 +65,37 @@ in
         "x-scheme-handler/unknown" = "zen-beta.desktop";
         "application/xhtml+xml" = "zen-beta.desktop";
 
-        "image/jpeg" = "org.xfce.ristretto.desktop";
-        "image/png" = "org.xfce.ristretto.desktop";
-        "image/gif" = "org.xfce.ristretto.desktop";
-        "image/webp" = "org.xfce.ristretto.desktop";
-        "image/svg+xml" = "org.xfce.ristretto.desktop";
-        "image/bmp" = "org.xfce.ristretto.desktop";
-        "image/tiff" = "org.xfce.ristretto.desktop";
+        "image/jpeg" = "org.gnome.Loupe.desktop";
+        "image/png" = "org.gnome.Loupe.desktop";
+        "image/gif" = "org.gnome.Loupe.desktop";
+        "image/webp" = "org.gnome.Loupe.desktop";
+        "image/svg+xml" = "org.gnome.Loupe.desktop";
+        "image/bmp" = "org.gnome.Loupe.desktop";
+        "image/tiff" = "org.gnome.Loupe.desktop";
 
-        "application/pdf" = "atril.desktop";
-        "application/epub+zip" = "atril.desktop";
-        "application/postscript" = "atril.desktop";
+        "application/pdf" = "org.gnome.Papers.desktop";
+        "application/epub+zip" = "org.gnome.Papers.desktop";
+        "application/postscript" = "org.gnome.Papers.desktop";
 
-        "inode/directory" = "thunar.desktop";
+        "inode/directory" = "org.gnome.Nautilus.desktop";
 
-        "text/plain" = "org.xfce.mousepad.desktop";
-        "text/markdown" = "org.xfce.mousepad.desktop";
-        "application/json" = "org.xfce.mousepad.desktop";
-        "application/x-shellscript" = "org.xfce.mousepad.desktop";
-        "text/x-c" = "org.xfce.mousepad.desktop";
-        "text/x-c++" = "org.xfce.mousepad.desktop";
-        "text/x-python" = "org.xfce.mousepad.desktop";
-        "text/rust" = "org.xfce.mousepad.desktop";
-        "text/xml" = "org.xfce.mousepad.desktop";
-        "application/xml" = "org.xfce.mousepad.desktop";
+        "text/plain" = "org.gnome.TextEditor.desktop";
+        "text/markdown" = "org.gnome.TextEditor.desktop";
+        "application/json" = "org.gnome.TextEditor.desktop";
+        "application/x-shellscript" = "org.gnome.TextEditor.desktop";
+        "text/x-c" = "org.gnome.TextEditor.desktop";
+        "text/x-c++" = "org.gnome.TextEditor.desktop";
+        "text/x-python" = "org.gnome.TextEditor.desktop";
+        "text/rust" = "org.gnome.TextEditor.desktop";
+        "text/xml" = "org.gnome.TextEditor.desktop";
+        "application/xml" = "org.gnome.TextEditor.desktop";
 
-        "video/mp4" = "mpv.desktop";
-        "video/x-matroska" = "mpv.desktop";
-        "video/webm" = "mpv.desktop";
-        "audio/mpeg" = "mpv.desktop";
-        "audio/flac" = "mpv.desktop";
-        "audio/x-wav" = "mpv.desktop";
+        "video/mp4" = "org.gnome.Showtime.desktop";
+        "video/x-matroska" = "org.gnome.Showtime.desktop";
+        "video/webm" = "org.gnome.Showtime.desktop";
+        "audio/mpeg" = "org.gnome.Showtime.desktop";
+        "audio/flac" = "org.gnome.Showtime.desktop";
+        "audio/x-wav" = "org.gnome.Showtime.desktop";
 
         "application/zip" = "org.gnome.FileRoller.desktop";
         "application/x-tar" = "org.gnome.FileRoller.desktop";

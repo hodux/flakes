@@ -34,5 +34,5 @@
     },
     "svelte.enable-ts-plugin": true,
     "java.import.gradle.java.home": "/nix/store/56mv72maqaj8j241d98fjcvwswaipfay-openjdk-21.0.12.1+1/lib/openjdk",
-    "workbench.colorTheme": "Light Modern"
+    "workbench.colorTheme": "Dark+"
 }

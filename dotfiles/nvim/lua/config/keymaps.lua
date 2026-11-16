@@ -45,8 +45,8 @@ if vim.g.vscode then
     vscode.action("workbench.action.openRecent")
   end, { desc = "Recent" })
   vim.keymap.set("n", "<leader>e", function()
-    vscode.action("workbench.view.explorer")
-  end, { desc = "File Explorer" })
+    vscode.action("workbench.action.toggleSidebarVisibility")
+  end, { desc = "Toggle Primary Side Bar" })
   vim.keymap.set("n", "<leader>fe", function()
     vscode.action("workbench.view.explorer")
   end, { desc = "File Explorer" })
@@ -139,4 +139,45 @@ else
 
   vim.keymap.set("n", "<leader>fp", "<cmd>NeovimProjectDiscover<cr>", { desc = "Switch Project (Workspace)" })
   vim.keymap.set("n", "<leader>fl", "<cmd>NeovimProjectLoadRecent<cr>", { desc = "Recent Projects" })
+
+  -- Toggle LaTeX / Math rendering (snacks.image & render-markdown)
+  Snacks.toggle({
+    name = "Render LaTeX",
+    get = function()
+      return Snacks.image.config.math.enabled ~= false
+    end,
+    set = function(state)
+      Snacks.image.config.math.enabled = state
+      for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_loaded(buf) then
+          if vim.b[buf].snacks_image_attached then
+            vim.api.nvim_exec_autocmds("BufWinEnter", { buffer = buf })
+          elseif state then
+            local ft = vim.bo[buf].filetype
+            local lang = vim.treesitter.language.get_lang(ft)
+            if vim.tbl_contains(Snacks.image.langs(), lang) then
+              Snacks.image.doc.attach(buf)
+            end
+          end
+        end
+      end
+      pcall(function()
+        Snacks.image.doc.hover_close()
+      end)
+      local ok_rm, rm_state = pcall(require, "render-markdown.state")
+      if ok_rm and rm_state.config and rm_state.config.latex then
+        rm_state.config.latex.enabled = state
+        for _, bconf in pairs(rm_state.cache or {}) do
+          if bconf.latex then
+            bconf.latex.enabled = state
+          end
+        end
+        pcall(function()
+          require("render-markdown").render({ buf = vim.api.nvim_get_current_buf() })
+        end)
+      end
+    end,
+  })
+    :map("<leader>ux")
+    :map("<leader>uM")
 end

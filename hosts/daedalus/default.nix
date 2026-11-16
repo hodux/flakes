@@ -40,10 +40,10 @@
   programs.gamescope.enable = true;
 
   services.ananicy = {
-      enable = true;
-      package = pkgs.ananicy-cpp;
-      rulesProvider = pkgs.ananicy-rules-cachyos;
-    };
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-rules-cachyos;
+  };
   services.lact.enable = true;
   # services.wivrn.enable = true;
   # services.wivrn.openFirewall = true;
@@ -51,7 +51,17 @@
   environment.systemPackages = with pkgs; [
     # blockbench
     davinci-resolve
-    lutris
+    mangohud
+    # Workaround for gnome-desktop 51.0 removing GnomeRR from GnomeDesktop-3.0
+    (lutris.override {
+      lutris-unwrapped = lutris-unwrapped.overrideAttrs (old: {
+        postPatch = (old.postPatch or "") + ''
+          substituteInPlace lutris/util/display.py \
+            --replace-fail 'LIB_GNOME_DESKTOP_AVAILABLE = True' \
+            'LIB_GNOME_DESKTOP_AVAILABLE = hasattr(GnomeDesktop, "RRScreen")'
+        '';
+      });
+    })
     prismlauncher
     protonup-qt
     # wayvr

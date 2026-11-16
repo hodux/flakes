@@ -3,3 +3,8 @@
 -- Add any additional options here
 
 vim.opt.clipboard = ""
+vim.opt.background = "light"
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us", "fr" }
+vim.opt.conceallevel = 1
+vim.opt.concealcursor = "nc"

@@ -5,24 +5,25 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     # Editors & IDEs
-    intellij-idea
-    mousepad
     neovim
     vscode
 
     # Terminal, Shell & CLI Utilities
     act
+    cloudflared
     eza
     fastfetch
     fd
     file
     fzf
     gh
+    gperftools
     jq
     jujutsu
     kitty
     lazygit
     openssl
+    pciutils
     ripgrep
     tldr
     tmux
@@ -55,32 +56,39 @@
     unzip
     wlopm
     xwayland-satellite
+    wl-clipboard
 
     # Desktop Environment
-    atril
+    baobab
     dbeaver-bin
     file-roller
     gimp
+    gnome-text-editor
     gparted
     hyprpicker
+    inkscape
+    loupe
     mission-center
-    mpv
+    nautilus
     obsidian
     onlyoffice-desktopeditors
+    papers
     pureref
-    ristretto
     rnote
-    tracy
+    showtime
+    snapshot
+    # tracy
     vesktop
-    webcamoid
-    wl-clipboard
     wl-mirror
 
     # Processing
     ffmpeg
     ghostscript
     imagemagick
-    ink
+    pandoc
+    shellcheck
+    tectonic
+    xvfb-run
 
   ];
 }

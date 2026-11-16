@@ -4,21 +4,6 @@ function fish_prompt
     # Top line: corner symbol
     echo -n '┌ '
 
-    # Vi mode indicator (if vi key bindings are active)
-    if test "$fish_key_bindings" = "fish_vi_key_bindings"
-        or test "$fish_key_bindings" = "fish_hybrid_key_bindings"
-        switch $fish_bind_mode
-            case default
-                echo -n '[N] '
-            case insert
-                echo -n '[I] '
-            case replace-one
-                echo -n '[R] '
-            case visual
-                echo -n '[V] '
-        end
-    end
-
     # Current working directory (path)
     set -l cwd_color $fish_color_cwd
     test -n "$cwd_color"; or set cwd_color green

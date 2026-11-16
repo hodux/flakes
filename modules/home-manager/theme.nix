@@ -19,8 +19,8 @@
     gtk4.theme = null;
     colorScheme = "light";
     theme = {
-      name = "Greybird-bright";
-      package = pkgs.greybird;
+      name = "adw-gtk3";
+      package = pkgs.adw-gtk3;
     };
     font = {
       name = "Inter";
