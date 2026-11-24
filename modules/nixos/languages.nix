@@ -53,6 +53,7 @@
 
     # Infrastructure, Cloud & Databases
     kubectl
+    k9s
     kubelogin-oidc
     kustomize
     opentofu

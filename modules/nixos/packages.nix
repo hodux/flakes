@@ -27,6 +27,7 @@
     ripgrep
     tldr
     tmux
+    yazi
     zoxide
 
     # AI & LLM Tools
@@ -46,6 +47,7 @@
     btop
     ddcutil
     dust
+    ibus
     libnotify
     libqalculate
     lsof
