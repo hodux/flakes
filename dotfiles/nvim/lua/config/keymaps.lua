@@ -15,11 +15,11 @@ vim.keymap.set("n", "<leader>tk", function()
   vim.fn.jobstart({ "kitty", "--directory", root }, { detach = true })
 end, { desc = "Open External Terminal (kitty)" })
 
--- open external file manager (thunar)
+-- open external file manager (nautilus)
 vim.keymap.set("n", "<leader>te", function()
   local root = LazyVim.root()
-  vim.fn.jobstart({ "thunar", root }, { detach = true })
-end, { desc = "Open External File Manager (Thunar)" })
+  vim.fn.jobstart({ "nautilus", root }, { detach = true })
+end, { desc = "Open External File Manager (nautilus)" })
 
 -- for vscode neovim extension
 if vim.g.vscode then
