@@ -106,12 +106,13 @@ in
         "application/vnd.rar" = "org.gnome.FileRoller.desktop";
       };
     };
+
     desktopEntries = {
       trash = {
         name = "Trash";
         genericName = "Trash Can";
         comment = "Open the Trash Can";
-        exec = "thunar trash:///";
+        exec = "nautilus trash:///";
         icon = "user-trash";
         terminal = false;
         categories = [
@@ -135,9 +136,22 @@ in
         ];
         mimeType = [ "text/plain" ];
       };
+
+      "obsidian" = {
+        name = "Obsidian";
+        genericName = "Knowledge base";
+        exec = "obsidian --password-store=gnome-libsecret";
+        icon = "obsidian";
+        type = "Application";
+        terminal = false;
+        categories = [
+          "Office"
+        ];
+        mimeType = [ "x-scheme-handler/obsidian" ];
+      };
     };
   };
-
+      
   # don't change this
   home.stateVersion = "25.05";
 
