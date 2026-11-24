@@ -47,7 +47,6 @@
     btop
     ddcutil
     dust
-    ibus
     libnotify
     libqalculate
     lsof

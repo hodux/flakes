@@ -34,6 +34,13 @@
   # this avoids slow rebuilds from fish generating man caches
   documentation.man.cache.enable = false;
 
+  # ibus for dead keys & more
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+    ibus.engines = [ ];
+  };
+
   # Users
   users.users.rintaro = {
     isNormalUser = true;
