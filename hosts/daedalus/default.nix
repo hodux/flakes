@@ -4,7 +4,6 @@
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
-    # inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
   ];
 
   home-manager.users.rintaro.imports = [
@@ -20,7 +19,7 @@
   };
 
   hardware.wooting.enable = true;
-  hardware.enableAllFirmware = true;
+  hardware.steam-hardware.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
@@ -30,43 +29,28 @@
     overdrive.enable = true;
   };
   hardware.graphics.extraPackages = with pkgs; [
-    mesa.opencl
     rocmPackages.clr.icd
   ];
 
-  powerManagement.cpuFreqGovernor = "performance";
-
-  programs.gamemode.enable = true;
-  programs.gamescope.enable = true;
-
+  services.lact.enable = true;
   services.ananicy = {
     enable = true;
     package = pkgs.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
-  services.lact.enable = true;
   # services.wivrn.enable = true;
   # services.wivrn.openFirewall = true;
 
   environment.systemPackages = with pkgs; [
     # blockbench
     davinci-resolve
+    ds4u
+    dualsensectl
     mangohud
-    # Workaround for gnome-desktop 51.0 removing GnomeRR from GnomeDesktop-3.0
-    (lutris.override {
-      lutris-unwrapped = lutris-unwrapped.overrideAttrs (old: {
-        postPatch = (old.postPatch or "") + ''
-          substituteInPlace lutris/util/display.py \
-            --replace-fail 'LIB_GNOME_DESKTOP_AVAILABLE = True' \
-            'LIB_GNOME_DESKTOP_AVAILABLE = hasattr(GnomeDesktop, "RRScreen")'
-        '';
-      });
-    })
+    lutris
     prismlauncher
-    protonup-qt
-    # wayvr
-    wine
     wootility
+    # wayvr
     # xrizer
   ];
 }
