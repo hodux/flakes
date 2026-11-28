@@ -33,6 +33,8 @@
     # AI & LLM Tools
     antigravity-cli
     claude-code
+    t3code
+    antigravity-acp
 
     # Networking
     curl
@@ -74,7 +76,7 @@
     obsidian
     onlyoffice-desktopeditors
     papers
-    pureref
+    # pureref
     rnote
     showtime
     snapshot
